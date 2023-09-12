@@ -241,5 +241,5 @@
 	end
 
 	include("winrt_appxmanifest.lua")
-
+	include("_preload")
 	return m
