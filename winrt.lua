@@ -86,8 +86,8 @@
 	p.override(p.vstudio.vc2010, "compileAs", function(base, cfg)
 		base(cfg)
 
-		if cfg.consumewinrtextension ~= nil then
-			p.vstudio.vc2010.element("CompileAsWinRT", nil, cfg.consumewinrtextension)
+		if cfg.consumewinrtextension2 ~= nil then
+			p.vstudio.vc2010.element("CompileAsWinRT", nil, cfg.consumewinrtextension2)
 		end
 	end)
 
@@ -197,10 +197,17 @@
 			revision = "8.1"
 		elseif prj.system == p.WINUNIVERSAL then
 			type = "Windows Store"
-			revision = "8.2"
+			--revision = "8.2"
+			revision = "10.0"
 		end
 		p.vstudio.vc2010.element("ApplicationType", nil, type)
 		p.vstudio.vc2010.element("ApplicationTypeRevision", nil, revision)
+		
+		if prj.system == p.WINUNIVERSAL then
+			local revision2 = "10.0.19041.0"
+			p.vstudio.vc2010.element("WindowsTargetPlatformVersion", nil, revision2)
+			p.vstudio.vc2010.element("WindowsTargetPlatformMinVersion", nil, revision2)
+		end
 	end
 
 	function m.defaultLanguage(prj)
@@ -210,8 +217,8 @@
 	end
 
 	function m.compileAsWinRT(fcfg, condition)
-		if fcfg and fcfg.consumewinrtextension then
-			p.vstudio.vc2010.element("CompileAsWinRT", condition, fcfg.consumewinrtextension)
+		if fcfg and fcfg.consumewinrtextension2 then
+			p.vstudio.vc2010.element("CompileAsWinRT", condition, fcfg.consumewinrtextension2)
 		end
 	end
 

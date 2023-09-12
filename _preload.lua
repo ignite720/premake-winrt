@@ -53,7 +53,7 @@
 	}
 
 	api.register {
-		name = "consumewinrtextension",
+		name = "consumewinrtextension2",
 		scope = "config",
 		kind = "string",
 		allowed = {
